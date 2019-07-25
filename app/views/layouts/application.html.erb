@@ -43,11 +43,21 @@
     <br class="clear" />
 
   <div class="container">
-      <%= yield %>
+       
+       <% if flash[:error].present? %>
+
+          <div class="col-10 offset-1 alert alert danger">
+            <%= flash[:error].html_safe %>
+          </div>
+      <% end %>
+    <%= yield %>
+
   </div>
 
   <div class="footer">
     <div class="container">
+     
+
       <div class="row">
         <div class="col-6">
          <%= link_to "This isn't enough, I need more", root_path, class: 'next-quote' %>
@@ -55,7 +65,6 @@
 
 
         <div class="col-6 footer-blurb">
-
           Proudly hacked by <a href="[https://splurty-brandon-ho.herokuapp.com/]">[Brandon Ho]</a><br/>
           Want to build your own Splurty Web App - <a href="https://online.bootcampspot.com">Learn how to code here</a>
         </div>
